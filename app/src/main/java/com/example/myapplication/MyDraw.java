@@ -16,6 +16,7 @@ public class MyDraw extends View {
     public MyDraw(Context context) {
         super(context);
     }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -23,18 +24,25 @@ public class MyDraw extends View {
         // Выбираем кисть
         paint.setStyle(Paint.Style.FILL);
         // Белый цвет кисти
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.WHITE);
         // Закрашиваем холст
         canvas.drawPaint(paint);
         // Включаем сглаживание
         paint.setAntiAlias(true);
-        paint.setColor(Color.argb(127,0,0,255));
+        paint.setColor(Color.argb(127, 0, 0, 255));
         // Полупрозрачный синий круг радиусом 100 пикселей в центре экрана
 //        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 100, paint);
         // Синий прямоугольник вверху экрана
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(Color.BLACK);
-        canvas.drawPaint(paint);
+
+//        paint.setStyle(Paint.Style.FILL);
+//        paint.setColor(Color.MAGENTA);
+//        canvas.drawRect(100, 100, 200, 200, paint);
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setColor(Color.BLACK);
+//        paint.setStrokeWidth(8);
+//        canvas.drawRect(100, 100, 200, 200, paint);
+
+
 
         Game g = MainActivity.g;
         w = Math.min(getWidth() , getHeight()) / g.width;
@@ -46,6 +54,14 @@ public class MyDraw extends View {
                 if (g.board[i][j] == 3) paint.setColor(Color.WHITE);
                 if (g.board[i][j] == 4) paint.setColor(Color.RED);
                 if (g.board[i][j] == 5) paint.setColor(Color.RED);
+                canvas.drawRect(w * j, w * i, w * (j + 1), w * (i + 1), paint);
+            }
+        }
+        for (int i = 0; i < g.height; i++) {
+            for (int j = 0; j < g.width; j++) {
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setColor(Color.BLACK);
+                paint.setStrokeWidth(8);
                 canvas.drawRect(w * j, w * i, w * (j + 1), w * (i + 1), paint);
             }
         }
