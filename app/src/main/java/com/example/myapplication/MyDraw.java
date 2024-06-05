@@ -79,6 +79,7 @@ public class MyDraw extends View {
             Integer y = (int)(event.getY() / w);
             Log.d("coord", x.toString());
             MainActivity.g.board[y][x] = (MainActivity.g.board[y][x] +2)%6;
+
             this.invalidate();
         }
         return true;
