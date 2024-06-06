@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,12 +20,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
+//
+//
+//        setContentView();
+        setContentView(R.layout.activity_main);
+        LinearLayout drawView = findViewById(R.id.DrawView);
         g = new Game(10, 10);
-        setContentView(new MyDraw(this));
+        drawView.addView(new MyDraw(this));
         ArrayList <ArrayList<Integer>> result = g.Game1();
-        String lg = "";
-        Log.d("game111",g.Game1().get(0).toString());
+
+        List<String> stringList = new ArrayList<>();
+        for (List<Integer> sublist : result) {
+            StringBuilder sb = new StringBuilder();
+            for (Integer number : sublist) {
+                sb.append(number).append(" ");
+            }
+            stringList.add(sb.toString().trim());
+        }
+
+//        List<String> horizontalStringList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+
+        // Найти горизонтальный LinearLayout и добавить в него TextView
+        LinearLayout verticalLayout = findViewById(R.id.verticalAxis);
+
+        for (String number : stringList) {
+            TextView textView = new TextView(this);
+            textView.setGravity(Gravity.RIGHT);
+            textView.setText(number);
+            textView.setPadding(10, 0, 10, 0); // Добавить отступы, если нужно
+            verticalLayout.addView(textView);
+        }
+
+
+
 
 
     }

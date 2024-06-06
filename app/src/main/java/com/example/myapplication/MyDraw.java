@@ -45,7 +45,7 @@ public class MyDraw extends View {
 
 
         Game g = MainActivity.g;
-        w = Math.min(getWidth() , getHeight()) / g.width;
+        w = Math.min(getWidth() , getHeight()) / g.width - 5;
         for (int i = 0; i < g.height; i++) {
             for (int j = 0; j < g.width; j++) {
                 if (g.board[i][j] == 0) paint.setColor(Color.GRAY);
