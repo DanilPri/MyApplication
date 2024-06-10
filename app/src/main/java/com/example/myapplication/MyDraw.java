@@ -30,20 +30,6 @@ public class MyDraw extends View {
         // Включаем сглаживание
         paint.setAntiAlias(true);
         paint.setColor(Color.argb(127, 0, 0, 255));
-        // Полупрозрачный синий круг радиусом 100 пикселей в центре экрана
-//        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 100, paint);
-        // Синий прямоугольник вверху экрана
-
-//        paint.setStyle(Paint.Style.FILL);
-//        paint.setColor(Color.MAGENTA);
-//        canvas.drawRect(100, 100, 200, 200, paint);
-//        paint.setStyle(Paint.Style.STROKE);
-//        paint.setColor(Color.BLACK);
-//        paint.setStrokeWidth(8);
-//        canvas.drawRect(100, 100, 200, 200, paint);
-
-
-
         Game g = MainActivity.g;
         w = Math.min(getWidth() , getHeight()) / g.width - 5;
         for (int i = 0; i < g.height; i++) {
